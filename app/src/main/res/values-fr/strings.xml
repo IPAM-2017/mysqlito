@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ClientesIPAM</string>
+    <string name="agregar">Ajouter</string>
+    <string name="agregarNuevo">Ajouter un nouveau client</string>
+    <string name="cancelar">annuler</string>
+    <string name="eliminarCliente">Eliminar les clients</string>
+    <string name="lbl_apellidos">Noms de familie</string>
+    <string name="lbl_codigo">Code</string>
+    <string name="lbl_dui">DUI</string>
+    <string name="lbl_modopago">Mode de paiement</string>
+    <string name="lbl_nombre">Noms</string>
+    <string name="lbl_tipocliente">Type de client</string>
+    <string name="lstapellidos">Noms de familie:</string>
+    <string name="lstcodigo">Code:</string>
+    <string name="lstdui">DUI:</string>
+    <string name="lstformadepago">Mode de paiement:</string>
+    <string name="lstnombre">Noms:</string>
+    <string name="lsttipo">Type:</string>
+    <string name="modificar">Changement</string>
+    <string name="modificarCliente">Client changuement</string>
+    <string name="msg_agregado">Agrégat</string>
+    <string name="msg_llenarTodo">Remplir tous les chamsps s\'il vous pla</string>
+    <string name="tipo_mayorista">Grossiste</string>
+    <string name="tipo_minorista">Vente au détail</string>
+
+    <string-array name="tipo_cliente">
+        <item>Crédit</item>
+        <item>Denombre</item>
+        <item>Prevu</item>
+    </string-array>
+</resources>

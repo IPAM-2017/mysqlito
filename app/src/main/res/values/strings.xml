@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">IPAM clients</string>
+    <string name="lbl_codigo">Code</string>
+    <string name="lbl_dui">DUI</string>
+    <string name="lbl_nombre">First name</string>
+    <string name="lbl_apellidos">Surnames</string>
+    <string name="lbl_tipocliente">Client type</string>
+    <string name="lbl_modopago">Pay mode</string>
+    <string name="tipo_minorista">Retailer</string>
+    <string name="tipo_mayorista">Wholesaler</string>
+    <string name="msg_llenarTodo">Fill in all fields please</string>
+    <string name="msg_agregado">Aggregate</string>
+    <string name="agregar">Add</string>
+    <string name="modificar">Modify</string>
+    <string name="cancelar">Cancel</string>
+    <string name="modificarCliente">Modify client</string>
+    <string name="eliminarCliente">Delete customer</string>
+    <string name="lstcodigo">Code:</string>
+    <string name="lsttipo">Type:</string>
+    <string name="lstnombre">First name:</string>
+    <string name="lstapellidos">Surnames:</string>
+    <string name="lstformadepago">Pay mode:</string>
+    <string name="lstdui">DUI:</string>
+    <string name="agregarNuevo">Add new costumer</string>
+
+    <string-array name="tipo_cliente">
+        <item>Credit</item>
+        <item>Cash</item>
+        <item>Prepaid</item>
+    </string-array>
+</resources>
