@@ -22,10 +22,16 @@
     <string name="lstformadepago">Pay mode:</string>
     <string name="lstdui">DUI:</string>
     <string name="agregarNuevo">Add new costumer</string>
+    <string name="pago">Paid:</string>
+    <string name="selecpago">Select paid mode:</string>
+    <string name="modificado">Modified:</string>
+
 
     <string-array name="tipo_cliente">
         <item>Credit</item>
         <item>Cash</item>
         <item>Prepaid</item>
     </string-array>
+
+
 </resources>

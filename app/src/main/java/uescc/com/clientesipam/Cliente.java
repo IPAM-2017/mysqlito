@@ -9,6 +9,7 @@ public class Cliente {
     private String duiCli;
 
 public Cliente(){}
+
 public Cliente(String codigo, String nombre, String apellido, String tipo, String pago, String dui){
     this.codigoCli = codigo;
     this.nombreCli =nombre;

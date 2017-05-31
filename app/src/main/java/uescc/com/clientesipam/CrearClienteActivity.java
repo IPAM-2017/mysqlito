@@ -27,6 +27,8 @@ public class CrearClienteActivity extends AppCompatActivity {
     RadioGroup tipoCli;
     boolean checked;
 
+    String dui,nombres,apellidos,modo, tipo;
+
 
     public Cliente getCliente() {
         return cliente;
@@ -90,22 +92,34 @@ public class CrearClienteActivity extends AppCompatActivity {
     // utilizan los parametros View view
     public void crearCliente(View view){
         if (duiCli.getText().toString().isEmpty() ||
-            nombreCli.getText().toString().isEmpty() ||
-            apellidosCli.getText().toString().isEmpty() ||
-            !checked    )
+                nombreCli.getText().toString().isEmpty() ||
+                apellidosCli.getText().toString().isEmpty() ||
+                !checked    )
         {
             Toast.makeText(getApplicationContext(), "Llene todos los campos", Toast.LENGTH_LONG).show();
 
         }else{
+            dui=duiCli.getText().toString();
+            nombres=nombreCli.getText().toString();
+            apellidos=apellidosCli.getText().toString();
+            modo=cmbModoPago.getSelectedItem().toString();
 
-            this.cliente.setPagoCli(cmbModoPago.getSelectedItem().toString());
-            this.cliente.setNombreCli(nombreCli.getText().toString());
-            this.cliente.setApellidoCli(apellidosCli.getText().toString());
-            this.cliente.setDuiCli(duiCli.getText().toString());
-            this.cliente.setCodigoCli(""+(MainActivity.clientes.size()+1));
-            MainActivity.clientes.add(cliente);
-            Toast.makeText(getApplicationContext(), "Agregado : " + MainActivity.clientes.get(MainActivity.clientes.size()-1).getNombreCli().toString(), Toast.LENGTH_LONG).show();
-            this.cliente = new Cliente();
+            database db=new database(this);
+
+            db.agregar(dui,nombres,apellidos,modo,tipo);
+
+            db.close();
+
+
+
+            //this.cliente.setPagoCli(cmbModoPago.getSelectedItem().toString());
+            //this.cliente.setNombreCli(nombreCli.getText().toString());
+            //this.cliente.setApellidoCli(apellidosCli.getText().toString());
+            //this.cliente.setDuiCli(duiCli.getText().toString());
+            //this.cliente.setCodigoCli(""+(MainActivity.clientes.size()+1));
+            //MainActivity.clientes.add(cliente);
+            Toast.makeText(getApplicationContext(), ""+getResources().getString(R.string.msg_agregado), Toast.LENGTH_LONG).show();
+            //this.cliente = new Cliente();
             limpiarForm();
             finish();
 
@@ -121,13 +135,15 @@ public class CrearClienteActivity extends AppCompatActivity {
         switch(view.getId()) {
             case R.id.rbtnMayorista:
                 if (checked)
-                    this.cliente.setTipoCli("Mayorista");
-
+                    this.cliente.setTipoCli(""+getResources().getString(R.string.tipo_mayorista));
+                        this.tipo=""+getResources().getString(R.string.tipo_mayorista);
+                                //corrije error del idioma
                 break;
             case R.id.rbtnMinorista:
                 if (checked)
-                    this.cliente.setTipoCli("Minorista");
-
+                    this.cliente.setTipoCli(""+getResources().getString(R.string.tipo_minorista));
+                        this.tipo=""+getResources().getString(R.string.tipo_minorista);
+                                //corrije error del idioma
                 break;
 
 

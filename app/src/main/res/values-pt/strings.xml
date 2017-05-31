@@ -23,9 +23,13 @@
     <string name="cancelar">Cancelar</string>
     <string name="agregarNuevo">Adicionar novo cliente</string>
     <string name="agregar">Adicionar</string>
+    <string name="selecpago">Modo pagamento:</string>
+    <string name="pago">Pagamento:</string>
+    <string name="modificado">Mudanca:</string>
     <string-array name="tipo_cliente">
         <item>Credito</item>
         <item>Contadas</item>
         <item>Antecipado</item>
     </string-array>
+
 </resources>

@@ -80,7 +80,7 @@ public class ModificarClienteActivity extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                Toast.makeText(getApplicationContext(), "Seleccione Modo Pago", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),  getResources().getString(R.string.selecpago) +" ", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -130,7 +130,7 @@ public class ModificarClienteActivity extends AppCompatActivity {
                 apellidosCli.getText().toString().isEmpty() ||
                 !checked    )
         {
-            Toast.makeText(getApplicationContext(), "Llene todos los campos", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), getResources().getString(R.string.msg_llenarTodo) +"", Toast.LENGTH_LONG).show();
 
         }else{
 
@@ -141,7 +141,7 @@ public class ModificarClienteActivity extends AppCompatActivity {
             this.cliente.setCodigoCli(codigoCli.getText().toString());
             //Aca modifico al clente
             MainActivity.clientes.set(Integer.parseInt(codigoCli.getText().toString())-1, cliente);
-            Toast.makeText(getApplicationContext(), "Modificado : " + MainActivity.clientes.get(MainActivity.clientes.size()-1).getNombreCli().toString(), Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), getResources().getString(R.string.modificado) +" " + MainActivity.clientes.get(MainActivity.clientes.size()-1).getNombreCli().toString(), Toast.LENGTH_LONG).show();
             this.cliente = new Cliente();
             finish();
 

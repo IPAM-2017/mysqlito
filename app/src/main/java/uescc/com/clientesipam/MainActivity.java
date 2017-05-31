@@ -2,6 +2,9 @@ package uescc.com.clientesipam;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.ContextMenu;
@@ -28,6 +31,11 @@ public class MainActivity extends AppCompatActivity {
     ListView listView;
     public static List<Cliente> clientes;
     private AdaptadorClientes adaptador;
+    database db;
+    ArrayList<String> lista;
+    ArrayAdapter adp;
+    List<String> item=null;
+    Cliente cliente = new Cliente();
 
 
     @Override
@@ -42,6 +50,46 @@ public class MainActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.listViewClientes);
 
         registerForContextMenu(listView);
+        mostrar();
+
+    }
+
+    public void mostrar(){
+        db=new database(this);
+        Cursor c=db.getDatos();
+        item=new ArrayList<String>();
+        String dui="",nombre="",apellido="",modo="", tipo="", codigo="";
+        if(c.moveToFirst()){
+            do{
+                codigo=c.getString(0);
+                dui=c.getString(1);
+                nombre=c.getString(2);
+                apellido=c.getString(3);
+                modo=c.getString(4);
+                tipo=c.getString(5);
+
+                this.cliente.setPagoCli(modo);
+                this.cliente.setNombreCli(nombre);
+                this.cliente.setApellidoCli(apellido);
+                this.cliente.setDuiCli(dui);
+                this.cliente.setTipoCli(tipo);
+                this.cliente.setCodigoCli(codigo);
+                MainActivity.clientes.add(cliente);
+                //Toast.makeText(getApplicationContext(), ""+getResources().getString(R.string.msg_agregado), Toast.LENGTH_LONG).show();
+                this.cliente = new Cliente();
+
+             item.add(codigo+" "+dui+" "+nombre+" "+apellido+" "+modo+" "+tipo);
+            }while (c.moveToNext());
+            //ArrayAdapter<String> adapter=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, item);
+            //listView.setAdapter(adapter);
+        }
+
+        //TextView lblCodigo = (TextView)item.findViewById(R.id.LblCodigo);
+        //TextView lblNombre = (TextView)item.findViewById(R.id.LblNombre);
+        //TextView lblApellidos = (TextView)item.findViewById(R.id.LblApellido);
+        //TextView lblTipo = (TextView)item.findViewById(R.id.LblTipo);
+        //TextView lblFormaDePago = (TextView)item.findViewById(R.id.LblFormaDePago);
+        //TextView lblDui = (TextView)item.findViewById(R.id.LblDUI);
 
     }
     @Override
@@ -85,13 +133,19 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {
-//Tengo que eliminar el registro
+        //Tengo que eliminar el registro
         //para modificar hay que crear una nueva actividad
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         switch (item.getItemId()){
 
             case R.id.eliminar:
-                clientes.remove(info.position);
+                String codigo=clientes.get(info.position).getCodigoCli();
+
+                int id=Integer.parseInt(codigo);
+                eliminarPersona(id);
+                System.out.println(codigo);
+
+                //clientes.remove(info.position);
                 adaptador.notifyDataSetChanged();
                 return true;
 
@@ -108,7 +162,16 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void eliminarPersona(int id) {
 
+
+        database db=new database(this);
+        db.eliminar(id);
+        db.close();
+
+        Toast.makeText(getApplicationContext(), "Eliminado cliente"+id, Toast.LENGTH_LONG).show();
+
+    }
     public void editarPersona(int id) {
         //obtengo el cliente seleccionado
         Cliente cliente = clientes.get(id);
@@ -137,8 +200,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-        public View getView(int posicion, View convertView, ViewGroup parent)
-        {
+        public View getView(int posicion, View convertView, ViewGroup parent) {
 
             LayoutInflater inflater = LayoutInflater.from(getContext());
             View item = inflater.inflate(R.layout.listitem_cliente, null);
@@ -157,8 +219,11 @@ public class MainActivity extends AppCompatActivity {
             lblFormaDePago.setText(clientes.get(posicion).getPagoCli());
             lblDui.setText(clientes.get(posicion).getDuiCli());
 
+
             return (item);
         }
+
+
 
 
 

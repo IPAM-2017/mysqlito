@@ -23,10 +23,14 @@
     <string name="msg_llenarTodo">Remplir tous les chamsps s\'il vous pla</string>
     <string name="tipo_mayorista">Grossiste</string>
     <string name="tipo_minorista">Vente au détail</string>
+    <string name="pago">Paiment:</string>
+    <string name="selecpago">Modo do paiment:</string>
+    <string name="modificado">Chengeme:</string>
 
     <string-array name="tipo_cliente">
         <item>Crédit</item>
         <item>Denombre</item>
         <item>Prevu</item>
     </string-array>
+
 </resources>
